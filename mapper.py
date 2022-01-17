@@ -1,6 +1,16 @@
 #!/usr/bin/env python
 import sys
 
+stop_words = {
+ '.',
+ ',',
+ ':',
+ 'a',
+ 'the',
+ 'an',
+ 'and'
+}
+
 # get all lines from stdin
 for line in sys.stdin:
     # remove leading and trailing whitespace
@@ -11,4 +21,5 @@ for line in sys.stdin:
 
     # output tuples (word, 1) in tab-delimited format
     for word in words:
-        print '%s\t%s' % (word, "1")
+	if not word in stop_words:
+        	print '%s\t%s' % (word, "1")
